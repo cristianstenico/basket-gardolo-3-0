@@ -1,0 +1,36 @@
+.widget {
+	margin: 0 0 24px;
+	padding-left: 24px;
+	padding-right: 24px;
+	word-wrap: break-word;
+	border-bottom: 1px solid $color__border;
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+	@media screen and (min-width: $break-s){
+		margin-bottom: 48px;
+		padding-bottom: 24px;
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+	@media screen and (min-width: $break-l){
+		padding-right: 0px;
+	}
+	@media screen and (min-width: $break-xl){
+		padding-right: 48px;
+	}
+	
+	ul{
+		list-style: none;
+	}
+	a{
+		color:$color__yellow;
+	}
+	&:last-of-type{
+		margin-bottom: -1px;
+	}
+}
+.widget-area{
+	color: #C6CADB;
+}

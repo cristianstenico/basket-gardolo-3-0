@@ -1,0 +1,86 @@
+.match-home-club, .match-away-club, .match-score{
+	display: inline;
+}
+.wpcm_match{
+	th{
+		text-align: left;
+	}
+	.entry-title{
+		//text-align: center;
+	}
+	.comp-links-wrapper{
+		border-bottom: 1px solid rgba(255,255,255,.7);
+		//text-align: center;
+	}
+	.comp-links{
+		font-size: 1.2em;
+		margin-bottom: -.75em;
+		padding-left: 1em;
+		a{
+			padding: 0 .3em;
+			background: #fff;
+			color: $color__blue;
+			&:hover{
+				background: #333;
+				color: #fff;
+			}
+		}
+	}
+	.wpcm_match_date {
+		border: 1px solid #fff;
+		padding: 0 .5em;
+		width: 5em;
+		margin-bottom: .5em;
+		background-color: rgba(255,255,255,.3);
+		.match_day{
+			display: block;
+			text-align:center;
+			font-size: 2.5em;
+		}
+		
+	}
+}
+
+.wpcm-matches-widget{ 
+	.clubs .score{
+		border: 1px solid $color__border;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		padding: 0 .5em;
+		margin: -1px;
+		max-width:33%;
+	}
+	.clubs .home-clubs, .clubs .away-clubs{
+		border: 1px solid $color__border;
+		position: relative;
+		width: 100%;
+		margin-bottom: -1px;
+	}
+	.fixture {
+		a{
+			display:block;
+			overflow:hidden;
+			padding-bottom: 1px;
+		}
+		&:hover{
+			a{
+				background-color: $color__border;
+			}
+		}
+	}
+	.fixture, .basket-fixture-meta{
+		width: 100%;
+	}
+	.basket-fixture-meta{
+		background: $color__border;
+		padding: 0 2%;
+	}
+	.basket-wpcm-date{
+		float: right;
+	}
+	.club-name{
+		max-width:66%;
+	}
+}
