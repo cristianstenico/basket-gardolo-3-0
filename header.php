@@ -25,14 +25,10 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'basket-gardolo-3-0' ); ?></a>
 		<header id="masthead" class="site-header" role="banner">
-
+            <div class="site-header-inner">
 			<?php get_template_part( 'components/header/site', 'branding' ); ?>
 
-			<?php basket_gardolo_3_0_the_site_logo(); ?>
-
 			<?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
-
-			<?php basket_gardolo_3_0_social_menu(); ?>
-
+            </div>
 		</header>
 		<div id="content" class="site-content">

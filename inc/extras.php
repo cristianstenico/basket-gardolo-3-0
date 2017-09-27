@@ -19,7 +19,11 @@ function basket_gardolo_3_0_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
-	if ( ( is_home() && ! is_paged() && has_post_thumbnail() ) || ( is_singular() && has_post_thumbnail() ) || (is_singular() && count($featuredImage) > 0) ){
+    if (get_post_type() == 'sp_player') {
+        return $classes;
+    }
+	if ( ( is_singular() && has_post_thumbnail() ) ||
+         ( is_singular() && $featuredImage) ) {
 		$classes[] = 'has-hero';
 	}
 
@@ -42,7 +46,7 @@ function basket_gardolo_3_0_post_classes( $classes ) {
 	global $wp_query;
 	
 	// Adds a class of hero to the 1st post on the 1st page if it has a featured image.
-	if ( is_home() && ! is_paged() && 0 === $wp_query->current_post && has_post_thumbnail() ) {
+	if ( is_front_page() && ! is_paged() && 0 === $wp_query->current_post && has_post_thumbnail() ) {
 		$classes[] = 'hero';
 	}
 	return $classes;

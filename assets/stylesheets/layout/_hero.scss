@@ -1,110 +1,112 @@
-.hero{
-	background-position: 50% 50%;
-	background-size: cover;
-	border-bottom: 0;
-	margin-top: -24px;
-	padding-left: 0;
-	padding-right: 0;
-	position: relative;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-	@media screen and (min-width: $break-xs){
-		height: 100vh;
-		width: 100vw;
-	}
-	@media screen and (min-width: $break-s){
-		margin-left: -144px;
-		margin-left: calc( (-100vw + 768px) / 2 );
-		margin-top: -48px;
-		width: 1055px;
-		width: 100vw;
-	}
-	@media screen and (min-width: $break-l){
-	    margin-left: -156px;
-		margin-left: calc( (-100vw + 960px) / 2 );
-		width: 1271px;
-		width: 100vw;
-	}
-	@media screen and (min-width: $break-xl){
-		margin-left: -120px;
-		margin-left: calc( (-100vw + 1176px) / 2 );
-		width: 1415px;
-		width: 100vw;
-	}
-	@media screen and (min-width: $break-xxl){
-		margin-left: -340px;
-		margin-left: calc( (-100vw + 1320px) / 2 );
-		width: 2000px;
-		width: 100vw;
-	}
-	.hentry-inner {
-		background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
-		text-shadow: 0 0 0.125em rgba(0, 0, 0, 0.5);
-		width: 100%;
-		color: #fff;
-		a{
-			color:#fff;
-		}
-		@media screen and (min-width: $break-xs) {
-			bottom: 0;
-			left: 0;
-			position: absolute;
-		}	
-	}
-	.entry-title{
-		width: 100%;
-		font-size: 32px;
-		line-height: 1.125;
-		@media screen and (min-width: $break-s){
-			font-size: 52px;
-			line-height: 1.1613;
-		}
-	}
-	.entry-meta{
-		font-size: 13px;
-		@media screen and (min-width: $break-s){
-			font-size: 16px;
-		}
-	}
+.hero {
+  background-position: 50% 50%;
+  background-size: cover;
+  border-bottom: 0;
+  margin-top: -24px;
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  @media screen and (min-width: $break-xs) {
+    height: 100vh;
+    width: 100vw;
+  }
+  @media screen and (min-width: $break-s) {
+    margin-left: -144px;
+    margin-left: calc((-100vw + 100%) / 2);
+    width: 1055px;
+    width: 100vw;
+  }
+  @media screen and (min-width: $break-l) {
+    width: 1271px;
+    width: 100vw;
+  }
+  @media screen and (min-width: $break-xl) {
+    width: 1415px;
+    width: 100vw;
+  }
+  @media screen and (min-width: $break-xxl) {
+    width: 2000px;
+    width: 100vw;
+  }
+  .hentry-inner {
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+    text-shadow: 0 0 0.125em rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+    @media screen and (min-width: $break-xs) {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+    }
+  }
+  .entry-title {
+    width: 100%;
+    font-size: 32px;
+    line-height: 1.125;
+    @media screen and (min-width: $break-s) {
+      font-size: 52px;
+      line-height: 1.1613;
+    }
+  }
+  .entry-meta {
+    font-size: 13px;
+    @media screen and (min-width: $break-s) {
+      font-size: 16px;
+    }
+  }
 }
 
-.has-hero{
-	.content-area{
-		padding-top: 0;
-	}
+.has-hero {
+  .content-area, .widget-column {
+    padding-top: 0;
+    margin-top: 100vh;
+  }
+  .site-header {
+    position: relative;
+    &.pinned {
+      position: fixed;
+    }
+  }
 }
 
-.entry-wrapper{
-	padding-bottom:24px;
-	padding-top: 24px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 24px;
-	padding-right: 24px;
-	position: relative;
-	width: 100%;
-	@media screen and (min-width: $break-xs){
-	
-	}
-	@media screen and (min-width: $break-s){
-		padding-left: 48px;
-		padding-right: 48px;
-		width: 768px;
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 0;
-		padding-right: 0;
-	}
-	@media screen and (min-width: $break-l){
-		padding-left: 0;
-		padding-right: 0;
-		width: 960px;
-	}
-	@media screen and (min-width: $break-xl){
-		width: 1176px;
-	}
-	@media screen and (min-width: $break-xxl){
-		width: 1320px;
-	}
+.entry-wrapper {
+  padding-bottom: 24px;
+  padding-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  position: relative;
+  width: 100%;
+  @media screen and (min-width: $break-xs) {
+
+  }
+  @media screen and (min-width: $break-s) {
+    padding-left: 48px;
+    padding-right: 48px;
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media screen and (min-width: $break-l) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 960px;
+  }
+  @media screen and (min-width: $break-xl) {
+    width: 1176px;
+  }
+  @media screen and (min-width: $break-xxl) {
+    width: 1320px;
+  }
 }

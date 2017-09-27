@@ -8,7 +8,16 @@
  */
 
 get_header(); ?>
-
+	<div class="widget-column">
+		<?php
+		global $competition;
+		if ($competition) {
+			dynamic_sidebar('sidebar-2');
+		} else {
+			dynamic_sidebar('gardolo-sidebar');
+		}
+		?>
+	</div>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
@@ -44,6 +53,8 @@ get_header(); ?>
 
 		</main>
 	</div>
+<div class="widget-column">
+	<?php dynamic_sidebar('sidebar-1'); ?>
+</div>
 <?php
-get_sidebar();
 get_footer();

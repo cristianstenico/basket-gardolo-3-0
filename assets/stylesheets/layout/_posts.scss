@@ -1,28 +1,100 @@
 .sticky {
-	display: block;
+  display: block;
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+  margin: 0 0 1.5em;
 }
 
 .byline,
-.updated:not(.published){
-	display: none;
+.updated:not(.published) {
+  display: none;
 }
 
 .single .byline,
 .group-blog .byline {
-	display: inline;
+  display: inline;
 }
 
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+  margin: 1.5em 0 0;
 }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
-	display: none;
+  display: none;
 }
+
+.post-nav {
+  border-top:1px solid $color__light_blue;
+  border-bottom:1px solid $color__light_blue;
+  overflow: hidden;
+  .prev-next-post-nav {
+    padding: 2rem 1rem;
+    transition: background .5s ease-in-out;
+    position: relative;
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+    &:before {
+      display: block;
+      content: " ";
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      background: linear-gradient(to right, transparent, $color__light_blue);
+      z-index:-1;
+    }
+    &.alignright {
+      &:before {
+        background: linear-gradient(to right, transparent, $color__light_blue);
+      }
+    }
+    &.alignleft {
+      &:before {
+        background: linear-gradient(to left, transparent, $color__light_blue);
+      }
+    }
+  }
+}
+.content-sponsor {
+  padding: 1rem 0 0;
+  margin-bottom:1rem;
+  .sponsor-separator {
+    width: 100%;
+    border-bottom: 1px solid $color__dark_blue;
+  }
+  .content-sponsor-inner {
+    display: flex;
+    align-items: center;
+    padding:1rem 0;
+    justify-content: center;
+    .sponsor-buttons {
+      div {
+        float: left;
+        margin-right:1rem;
+        display: flex;
+        align-items: center;
+        border:1px solid $color__blue;
+        overflow: hidden;
+        line-height:100%;
+        border-radius: 3px;
+        padding:.5rem;
+      }
+      margin-left: 2rem;
+      img {
+        width: 4rem;
+      }
+    }
+  }
+  border-bottom: 1px solid $color-_dark_blue;
+}
+

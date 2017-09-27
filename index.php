@@ -11,15 +11,27 @@
  *
  * @package Basket_Gardolo_3.0
  */
-
-get_header(); ?>
+get_header();
+$post_type = get_post_type();
+?>
 	<?php
 		if ( is_home() ) {
 			// Include the featured content template.
 			
 			get_template_part( 'components/features/featured-content/display', 'featured' );
 		}
+
 	?>
+<div class="widget-column">
+    <?php
+    global $competition;
+    if ($competition) {
+        dynamic_sidebar('sidebar-2');
+    } else {
+        dynamic_sidebar('gardolo-sidebar');
+    }
+    ?>
+</div>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 		<?php
@@ -31,7 +43,6 @@ get_header(); ?>
 				</header>
 			<?php
 			endif;
-			
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -43,8 +54,12 @@ get_header(); ?>
 				get_template_part( 'components/post/content', get_post_format() );
 
 			endwhile;
-			the_posts_navigation();
-
+			the_posts_navigation(
+                array(
+			        'prev_text' => '&#8592;',
+                    'next_text' => '&#8594;'
+                )
+            );
 		else :
 			get_template_part( 'components/post/content', 'none' );
 
@@ -52,6 +67,8 @@ get_header(); ?>
 
 		</main>
 	</div>
+<div class="widget-column">
+    <?php dynamic_sidebar('sidebar-1'); ?>
+</div>
 <?php
-get_sidebar();
 get_footer();

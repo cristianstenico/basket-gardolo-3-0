@@ -1,9 +1,5 @@
 a {
 	color: $color__link;
-
-	&:visited {
-		color: $color__link-visited;
-	}
 	&:hover,
 	&:focus,
 	&:active {

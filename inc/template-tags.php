@@ -59,14 +59,14 @@ function basket_gardolo_3_0_posted_on() {
 	}
 
 	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
+		esc_attr( get_the_date( 'd F Y' ) ),
+		esc_html( get_the_date( 'd F Y') ),
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'basket-gardolo-3-0' ),
+		esc_html_x( '%s', 'post date', 'basket-gardolo-3-0' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -86,25 +86,23 @@ if ( ! function_exists( 'basket_gardolo_3_0_entry_footer' ) ) :
  */
 function basket_gardolo_3_0_entry_footer() {
 	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
+	/* if ( 'post' === get_post_type() ) {
 		$categories_list = get_the_category_list( esc_html__( ', ', 'basket-gardolo-3-0' ) );
 		if ( $categories_list && basket_gardolo_3_0_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'basket-gardolo-3-0' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( '%1$s', 'basket-gardolo-3-0' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
-		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'basket-gardolo-3-0' ) );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'basket-gardolo-3-0' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
-	}
+	}*/
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+	/*if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
 		comments_popup_link( esc_html__( 'Leave a comment', 'basket-gardolo-3-0' ), esc_html__( '1 Comment', 'basket-gardolo-3-0' ), esc_html__( '% Comments', 'basket-gardolo-3-0' ) );
 		echo '</span>';
-	}
+	}*/
 
 	edit_post_link(
 		sprintf(

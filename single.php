@@ -6,18 +6,52 @@
  *
  * @package Basket_Gardolo_3.0
  */
+$post_type = get_post_type();
+global $competition;
+if ($post_type == 'sp_player') {
+    $competition = wp_get_object_terms($post->ID, 'sp_league');
+}
+if ($post_type == 'sp_calendar') {
+    $competition = wp_get_object_terms($post->ID, 'sp_league');
+}
 
 get_header(); ?>
+<div class="widget-column">
+    <?php
+    global $competition;
+    if ($competition) {
+        dynamic_sidebar('sidebar-2');
+    } else {
+        dynamic_sidebar('gardolo-sidebar');
+    }
+    ?>
+</div>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
 		<?php
 		while ( have_posts() ) : the_post();
-			get_template_part( 'components/post/content', get_post_format() );
+			$post_type = get_post_type();
+		    if ($post_type == 'sp_calendar') {
+		        $calendar = new SP_Calendar($post);
+                the_title('<h1 class="entry-title">', '</h1>');
+                sp_get_template( 'event-blocks.php',
+                    array(
+                        'id' => $calendar->ID
+                    )
+                );
+            } else if ($post_type == 'sp_player' || $post_type == 'sp_staff') {
+                the_title('<h1 class="entry-title">', '</h1>');
+		        the_content();
+            } else {
+                get_template_part(sprintf('components/%s/content', $post_type), get_post_format());
+            }
+                // Previous/next post navigation.
+                the_post_navigation( array(
+                    'next_text' => '<span class="post-title">%title</span>' . '<span class="meta-nav" aria-hidden="true">' . __( '&#8594;', 'basket_gardolo_3_0' ) . '</span> ',
+                    'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '&#8592;', 'basket_gardolo_3_0' ) . '</span> ' . '<span class="post-title">%title</span>',
+                ) );
 
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
+            // If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
@@ -27,6 +61,9 @@ get_header(); ?>
 
 		</main>
 	</div>
+    <div class="widget-column">
 <?php
-get_sidebar();
+dynamic_sidebar('sidebar-1'); ?>
+        </div>
+<?php
 get_footer();

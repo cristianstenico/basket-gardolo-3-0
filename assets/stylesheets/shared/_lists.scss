@@ -15,9 +15,15 @@ li > ol {
 	margin-bottom: 0;
 	margin-left: 1.5em;
 }
+dt,dd{
+  padding: 0.3em;
+}
 
 dt {
 	font-weight: bold;
+	background-color: rgba(0,0,0,.1);
+  float:left;
+  margin-right:0.5em;
 }
 
 dd {

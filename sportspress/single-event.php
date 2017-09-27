@@ -12,34 +12,29 @@
  * @package Basket_Gardolo_3.0
  */
 global $competition;
-if (has_shortcode($post->post_content, 'player_list')) {
-    $pattern = get_shortcode_regex();
-    preg_match('/' . $pattern . '/s', $post->post_content, $matches);
-    if ($matches) :
-        if (is_array($matches) && $matches[2] == 'player_list') {
-            $team_id = shortcode_parse_atts($matches[0])['id'];
-            $competition = get_the_terms($team_id, 'sp_league');
-        }
-    endif;
-}
+$competition = wp_get_object_terms($post->ID, 'sp_league');
 get_header(); ?>
     <div class="widget-column">
-        <?php
-            if ($competition) {
-                dynamic_sidebar('sidebar-2');
-            } else {
-                dynamic_sidebar('gardolo-sidebar');
-            }
-        ?>
+        <?php dynamic_sidebar('sidebar-2'); ?>
     </div>
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
 
             <?php
             while (have_posts()) : the_post();
-
-                get_template_part('components/page/content', 'page');
-
+                get_template_part('components/single_event/content');
+                ?>
+                <div class="post-nav">
+                    <div class="alignleft prev-next-post-nav">
+                        <?php
+                            previous_post_link( '%link', '&#8592; %title' , true, ' ', 'sp_league');
+                        ?>
+                    </div>
+                    <div class="alignright prev-next-post-nav">
+                        <?php next_post_link( '%link', '%title &#8594;', true, ' ', 'sp_league' ); ?>
+                    </div>
+                </div>
+            <?php
                 // If comments are open or we have at least one comment, load up the comment template.
                 if (comments_open() || get_comments_number()) :
                     comments_template();
