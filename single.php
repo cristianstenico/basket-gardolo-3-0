@@ -39,7 +39,7 @@ get_header(); ?>
 						'id' => $calendar->ID
 					)
 				);
-			} else if ($post_type == 'sp_player' || $post_type == 'sp_staff' || $post_type == 'minibasket') {
+			} else if ($post_type == 'sp_player' || $post_type == 'sp_staff') {
 				the_content();
 			} else {
 				get_template_part(sprintf('components/%s/content', $post_type), get_post_format());
