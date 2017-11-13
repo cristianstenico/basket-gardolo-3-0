@@ -31,34 +31,32 @@ get_header(); ?>
 		<?php
 		while ( have_posts() ) : the_post();
 			$post_type = get_post_type();
-		    if ($post_type == 'sp_calendar') {
-		        $calendar = new SP_Calendar($post);
-                the_title('<h1 class="entry-title">', '</h1>');
-                sp_get_template( 'event-blocks.php',
-                    array(
-                        'id' => $calendar->ID
-                    )
-                );
-            } else if ($post_type == 'sp_player' || $post_type == 'sp_staff') {
-                the_title('<h1 class="entry-title">', '</h1>');
-		        the_content();
-            } else {
-                get_template_part(sprintf('components/%s/content', $post_type), get_post_format());
-            }
-                // Previous/next post navigation.
-                the_post_navigation( array(
-                    'next_text' => '<span class="post-title">%title</span>' . '<span class="meta-nav" aria-hidden="true">' . __( '&#8594;', 'basket_gardolo_3_0' ) . '</span> ',
-                    'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '&#8592;', 'basket_gardolo_3_0' ) . '</span> ' . '<span class="post-title">%title</span>',
-                ) );
+			the_title('<h1 class="entry-title">', '</h1>');
+			if ($post_type == 'sp_calendar') {
+				$calendar = new SP_Calendar($post);
+				sp_get_template( 'event-blocks.php',
+					array(
+						'id' => $calendar->ID
+					)
+				);
+			} else if ($post_type == 'sp_player' || $post_type == 'sp_staff' || $post_type == 'minibasket') 
+				the_content();
+			} else {
+				get_template_part(sprintf('components/%s/content', $post_type), get_post_format());
+            		}
+			// Previous/next post navigation.
+			the_post_navigation( array(
+				'next_text' => '<span class="post-title">%title</span>' . '<span class="meta-nav" aria-hidden="true">' . __( '&#8594;', 'basket_gardolo_3_0' ) . '</span> ',
+				'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '&#8592;', 'basket_gardolo_3_0' ) . '</span> ' . '<span class="post-title">%title</span>',
+			) );
 
-            // If comments are open or we have at least one comment, load up the comment template.
+			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
 
 		endwhile; // End of the loop.
 		?>
-
 		</main>
 	</div>
     <div class="widget-column">
