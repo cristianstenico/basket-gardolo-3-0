@@ -5,6 +5,7 @@ footer {
   .site-info {
     color: #fff;
     @media screen and (min-width: $break-l) {
+      width: 1320px;
       padding: 0 3rem;
     }
   }
