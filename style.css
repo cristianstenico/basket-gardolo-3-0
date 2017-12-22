@@ -1123,7 +1123,12 @@ body {
 --------------------------------------------------------------*/
 .site-info {
   border-top: 4px solid #F5CA14;
-  background-color: #3A7895; }
+  border-bottom: 4px solid #F5CA14;
+  background-color: #3A7895;
+  color: #fff; }
+  @media screen and (min-width: 1056px) {
+    .site-info {
+      padding: 0 3rem; } }
 
 /*--------------------------------------------------------------
 # Comments
