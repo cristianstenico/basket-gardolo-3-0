@@ -1,4 +1,9 @@
 .site-info {
-	border-top: 4px solid #F5CA14;
-	background-color: #3A7895;
+  border-top: 4px solid #F5CA14;
+  border-bottom: 4px solid #F5CA14;
+  background-color: #3A7895;
+  color: #fff;
+  @media screen and (min-width: $break-l) {
+    padding: 0 3rem;
+  }
 }
