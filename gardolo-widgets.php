@@ -49,7 +49,7 @@ class Gardolo_Widget_Countdown extends WP_Widget {
 
         echo $before_title . 'Prossime partite di ' . $competition[0]->name . $after_title;
 
-        sp_get_template( 'countdown.php', array( 'league' => $competition[0]->term_id, 'show_venue' => true, 'show_logos' => true ) );
+        sp_get_template( 'countdown.php', array( 'team' => $team_id, 'league' => $competition[0]->term_id, 'show_venue' => true, 'show_logos' => true ) );
 
         sp_get_template( 'event-blocks.php', array( 'id' => $calendar->ID, 'status' => 'future', 'date' => 'range', 'date_from' => $date_from, 'date_to' => $date_to, 'number' => 3, 'order' => 'ASC', 'show_all_events_link' => false ) );
 
