@@ -18,8 +18,9 @@ if (has_shortcode($post->post_content, 'player_list')) {
     preg_match('/' . $pattern . '/s', $post->post_content, $matches);
     if ($matches) :
         if (is_array($matches) && $matches[2] == 'player_list') {
-            $team_id = shortcode_parse_atts($matches[0])['id'];
-            $competition = get_the_terms($team_id, 'sp_league');
+            $player_list_id = shortcode_parse_atts($matches[0])['id'];
+            $competition = get_the_terms($player_list_id, 'sp_league');
+            $team_id = get_post_meta($player_list_id, 'sp_team', true);
         }
     endif;
 }
