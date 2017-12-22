@@ -12,7 +12,9 @@
  * @package Basket_Gardolo_3.0
  */
 global $competition;
+global $team_id;
 $competition = wp_get_object_terms($post->ID, 'sp_league');
+$team_id = get_post_meta($post->ID, 'sp_team', true);
 get_header(); ?>
     <div class="widget-column">
         <?php dynamic_sidebar('sidebar-2'); ?>

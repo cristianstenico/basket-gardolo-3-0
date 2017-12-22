@@ -8,10 +8,15 @@
  */
 $post_type = get_post_type();
 global $competition;
-if ($post_type == 'sp_player') {
-    $competition = wp_get_object_terms($post->ID, 'sp_league');
-}
-if ($post_type == 'sp_calendar') {
+global $team_id;
+if ($post_type == 'sp_player' || $post_type == 'sp_calendar') {
+	 'meta_query' => array(
+                                array(
+                                    'key' => 'sp_team',
+                                    'value' => get_post_meta($team_id, 'sp_team', true)
+                                ),
+                            )
+    $team_id = get_post_meta($post->ID, 'sp_team', true);
     $competition = wp_get_object_terms($post->ID, 'sp_league');
 }
 

@@ -14,6 +14,7 @@ class Gardolo_Widget_Countdown extends WP_Widget {
 
     function widget( $args, $instance ) {
         global $competition;
+        global $team_id;
         extract($args);
         $post_arr = array(
             'post_type' => 'sp_calendar',
@@ -23,6 +24,12 @@ class Gardolo_Widget_Countdown extends WP_Widget {
                     'field' => 'term_id',
                     'terms' => $competition[0]->term_id
                 )
+            ),
+            'meta_query' => array(
+                array(
+                   'key' => 'sp_team',
+                   'value' => $team_id
+                ),
             )
         );
         $calendar = get_posts($post_arr);

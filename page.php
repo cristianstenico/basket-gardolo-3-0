@@ -12,6 +12,7 @@
  * @package Basket_Gardolo_3.0
  */
 global $competition;
+global $team_id;
 if (has_shortcode($post->post_content, 'player_list')) {
     $pattern = get_shortcode_regex();
     preg_match('/' . $pattern . '/s', $post->post_content, $matches);
