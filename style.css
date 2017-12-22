@@ -1,14 +1,14 @@
 /*
 Theme Name: Basket Gardolo 3.0
-Theme URI: http://www.basketgardolo.it/
+Theme URI: http://components.underscores.me/
 Author: Cristian Stenico
-Author URI: http://www.basketgardolo.it/player/cristian-stenico
+Author URI: http://automattic.com/
 Description: Basket GardoloTheme version 3.0
-Version: 3.0.0
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: basket-gardolo-3-0
-Tags:three-columns, news
+Tags:
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -1046,20 +1046,6 @@ body {
     .entry-wrapper {
       width: 1320px; } }
 
-/*-------------------------------------------------------------
-## HOMEPAGE
--------------------------------------------------------------- */
-.competizione {
-  color: #fff;
-  background: royalblue;
-  padding: 0 .5rem;
-  font-size: medium;
-}
-.date {
-  font-family: "Lato", sans-serif;
-  font-size: medium;
-  color: #000;
-}
 /*--------------------------------------------------------------
 ## WPCM
 --------------------------------------------------------------*/
@@ -1131,6 +1117,13 @@ body {
 
 .wpcm-matches-widget .club-name {
   max-width: 66%; }
+
+/*--------------------------------------------------------------
+## FOOTER
+--------------------------------------------------------------*/
+.site-info {
+  border-top: 4px solid #F5CA14;
+  background-color: #3A7895; }
 
 /*--------------------------------------------------------------
 # Comments
@@ -1299,3 +1292,5 @@ object {
 
 .gallery-caption {
   display: block; }
+
+/*# sourceMappingURL=style.css.map */
