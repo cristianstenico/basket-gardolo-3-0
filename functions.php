@@ -111,8 +111,8 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
         $season = $atts['season'];
         $team = $atts['team'];
         $staff_list = array();
-
-        foreach(array('Allenatore', 'Vice allenatore', 'Scorer') as $role) {
+        $roles = array('Allenatore', 'Vice allenatore', 'Scorer');
+        foreach($roles as $role) {
             $args = array(
                 'post_type' => 'sp_staff',
                 'tax_query' => array(
@@ -140,9 +140,11 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
                     )
                 )
             );
-            $staff = get_posts($args);
-            if ($staff) {
-                array_push($staff_list, $staff);
+            $results = get_posts($args);
+            if ($results) {
+                foreach($results as $res) {
+                    $staff_list[] = $res;
+                }
             }
         }
         if (count($staff_list) == 0) {
