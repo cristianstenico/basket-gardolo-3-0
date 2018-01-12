@@ -110,31 +110,42 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
         $league = $atts['league'];
         $season = $atts['season'];
         $team = $atts['team'];
+        $staff_list = array();
 
-        $args = array(
-            'post_type' => 'sp_staff',
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'sp_season',
-                    'field' => 'term_id',
-                    'terms' => $season
+        foreach(array('Allenatore', 'Vice allenatore', 'Scorer') as $role) {
+            $args = array(
+                'post_type' => 'sp_staff',
+                'tax_query' => array(
+                    'relation' => 'AND',
+                    array(
+                        'taxonomy' => 'sp_season',
+                        'field' => 'term_id',
+                        'terms' => $season
+                    ),
+                    array(
+                        'taxonomy' => 'sp_league',
+                        'field' => 'term_id',
+                        'terms' => $league
+                    ),
+                    array (
+                        'taxonomy' => 'sp_role',
+                        'field' => 'name',
+                        'terms' => $role
+                    )
                 ),
-                array(
-                    'taxonomy' => 'sp_league',
-                    'field' => 'term_id',
-                    'terms' => $league
+                'meta_query' => array(
+                    array(
+                        'key' => 'sp_current_team',
+                        'value' => $team
+                    )
                 )
-            ),
-            'meta_query' => array(
-                array(
-                    'key' => 'sp_current_team',
-                    'value' => $team
-                )
-            )
-        );
-        $staff_list = get_posts($args);
-        if (!$staff_list) {
+            );
+            $staff = get_posts($args);
+            if ($staff) {
+                array_push($staff_list, $staff)
+            }
+        }
+        if (count($staff_list) == 0) {
             return '';
         }
         $out =  '<table class="sp-player-list sp-data-table sp-sortable-table sp-scrollable-table sp-paginated-table dataTable no-footer">';
