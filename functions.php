@@ -130,7 +130,7 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
                     array (
                         'taxonomy' => 'sp_role',
                         'field' => 'name',
-                        'terms' => 
+                        'terms' => $role
                     )
                 ),
                 'meta_query' => array(
