@@ -19,7 +19,7 @@ function basket_gardolo_3_0_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
-    if (get_post_type() == 'sp_player') {
+    if (get_post_type() == 'sp_player' || get_post_type() == 'sp_staff') {
         return $classes;
     }
 	if ( ( is_singular() && has_post_thumbnail() ) ||
