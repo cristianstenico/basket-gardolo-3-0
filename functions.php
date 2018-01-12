@@ -138,7 +138,7 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
             return '';
         }
         $out =  '<table class="sp-player-list sp-data-table sp-sortable-table sp-scrollable-table sp-paginated-table dataTable no-footer">';
-        // $out .= '<thead><tr role="row"><th>Coach</th></tr></thead>';
+        $out .= '<thead><tr role="row"><th>Staff</th><th>Ruolo</th></tr></thead>';
         $out .= '<tbody>';
         foreach($staff_list as $staff) {
             $coach = new SP_Staff($staff);
@@ -149,7 +149,7 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
             if ($image) {
                 $out .= '<span class="player-photo">' . get_the_post_thumbnail($staff) . '</span>';
             }
-            $out .=  $staff->post_title . '</td>';
+            $out .=  '<a href="' . get_permalink($staff) . '">' . $staff->post_title . '</a></td>';
             if ($role) {
                 $out .= '<td>' . $role->name . '</td>';
             }
