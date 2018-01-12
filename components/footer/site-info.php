@@ -5,13 +5,13 @@
 		<p>38121 TRENTO </p>
 		<p>C.F. 96005430226 - P.I. 01140120229</p>
 	</div>
-	<div class="footer-column">
+<!--	<div class="footer-column">
 		<h5>Squadre</h5>
 	</div>
 	<div class="footer-column">
 		<h5>News</h5>
 	</div>
 	<div class="footer-column">
-		<h5>Lo società</h5>
-	</div>
+		<h5>La società</h5>
+	</div>-->
 </div><!-- .site-info -->
