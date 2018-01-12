@@ -130,7 +130,7 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
                     array (
                         'taxonomy' => 'sp_role',
                         'field' => 'name',
-                        'terms' => $role
+                        'terms' => 
                     )
                 ),
                 'meta_query' => array(
@@ -142,7 +142,7 @@ if (!function_exists('basket_gardolo_3_0_setup')) :
             );
             $staff = get_posts($args);
             if ($staff) {
-                array_push($staff_list, $staff)
+                array_push($staff_list, $staff);
             }
         }
         if (count($staff_list) == 0) {
