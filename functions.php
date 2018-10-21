@@ -554,7 +554,7 @@ class SP_Meta_Box_Player_Details_Gardolo
         $current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		$current_team = array_values(array_filter($teams, function ($team) {
             return strpos($team->post_title, 'Bc Gardolo') !== false;
-        }))[0];
+        }));
         ?>
         <p><strong><?php _e('Squad Number', 'sportspress'); ?></strong></p>
         <p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
