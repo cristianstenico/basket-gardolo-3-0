@@ -186,6 +186,8 @@ if (!function_exists('get_team_page_from_player')) :
                 if ($matches) :
                     if (is_array($matches) && $matches[2] == 'player_list') {
                         $team_id = shortcode_parse_atts($matches[0])['id'];
+                        $leagues = sp_get_the_term_ids($team_id, 'sp_league');
+                        $seasons = sp_get_the_term_ids($team_id, 'sp_season');
                         $args = array(
                             'post_type' => 'sp_player',
                             'numberposts' => -1,
@@ -193,23 +195,11 @@ if (!function_exists('get_team_page_from_player')) :
                             'meta_key' => 'sp_number',
                             'orderby' => 'meta_value_num',
                             'order' => 'ASC',
-                            'tax_query' => array(
-                                'relation' => 'AND',
-                                array(
-                                    'taxonomy' => 'sp_league',
-                                    'field' => 'term_id',
-                                    'terms' => sp_get_the_term_ids($team_id, 'sp_league')
-                                ),
-                                array(
-                                    'taxonomy' => 'sp_season',
-                                    'field' => 'term_id',
-                                    'terms' => sp_get_the_term_ids($team_id, 'sp_season')
-                                )
-                            ),
+                            // Look only for players who played in this specific league / season / team 
                             'meta_query' => array(
                                 array(
-                                    'key' => 'sp_team',
-                                    'value' => get_post_meta($team_id, 'sp_team', true)
+                                    'key' => 'sp_assignments',
+                                    'value' => intval($leagues[0]).'_'.intval($seasons[0]).'_'.intval(get_post_meta($team_id, 'sp_team', true))
                                 ),
                             )
                         );
@@ -552,9 +542,9 @@ class SP_Meta_Box_Player_Details_Gardolo
         $teams = get_posts(array('post_type' => 'sp_team', 'posts_per_page' => -1));
         $past_teams = array_filter(get_post_meta($post->ID, 'sp_past_team', false));
         $current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
-		$current_team = array_values(array_filter($teams, function ($team) {
-            return $team->post_title == 'Bc Gardolo';
-        }))[0];
+        $current_team = array_values(array_filter($teams, function ($team) {
+            return strpos($team->post_title, 'Bc Gardolo') !== false;
+        }));
         ?>
         <p><strong><?php _e('Squad Number', 'sportspress'); ?></strong></p>
         <p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo $number; ?>"></p>
