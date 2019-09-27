@@ -30,7 +30,6 @@ get_header(); ?>
 		<?php
 		while ( have_posts() ) : the_post();
 			$post_type = get_post_type();
-			the_title('<h1 class="entry-title">', '</h1>');
 			if ($post_type == 'sp_calendar') {
 				$calendar = new SP_Calendar($post);
 				sp_get_template( 'event-blocks.php',
